@@ -1,0 +1,26 @@
+name: Dictate
+options:
+  bundleIdPrefix: com.dictate
+  deploymentTarget:
+    macOS: "14.0"
+  xcodeVersion: "16.0"
+settings:
+  base:
+    SWIFT_VERSION: "5"
+    MACOSX_DEPLOYMENT_TARGET: "14.0"
+targets:
+  Dictate:
+    type: application
+    platform: macOS
+    sources:
+      - Dictate
+    settings:
+      base:
+        INFOPLIST_FILE: Dictate/Resources/Info.plist
+        CODE_SIGN_ENTITLEMENTS: Dictate/Dictate.entitlements
+        PRODUCT_BUNDLE_IDENTIFIER: com.dictate.app
+        MARKETING_VERSION: "1.0.0"
+        CURRENT_PROJECT_VERSION: "1"
+        CODE_SIGN_IDENTITY: "-"
+        ENABLE_HARDENED_RUNTIME: NO
+        COMBINE_HIDPI_IMAGES: YES

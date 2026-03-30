@@ -1,0 +1,10 @@
+# Xcode
+*.xcuserdata/
+DerivedData/
+*.xcworkspace/
+build/
+.DS_Store
+
+# Sensitive
+.env
+*.key
