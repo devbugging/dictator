@@ -19,7 +19,7 @@ final class KeyboardManager {
         guard let tap = CGEvent.tapCreate(
             tap: .cgSessionEventTap,
             place: .headInsertEventTap,
-            options: .listenOnly,
+            options: .defaultTap,
             eventsOfInterest: eventMask,
             callback: globalEventTapCallback,
             userInfo: Unmanaged.passUnretained(self).toOpaque()
@@ -50,7 +50,8 @@ final class KeyboardManager {
         }
     }
 
-    func handleKeyEvent(_ event: CGEvent) {
+    /// Returns `true` if the event was consumed by our shortcut (should not propagate).
+    func handleKeyEvent(_ event: CGEvent) -> Bool {
         let keyCode = event.getIntegerValueField(.keyboardEventKeycode)
         let flags = event.flags
         let type = event.type
@@ -61,13 +62,17 @@ final class KeyboardManager {
         if type == .keyDown && isEscapeKey && isControlPressed && !isActive {
             isActive = true
             onRecordingStarted?()
+            return true
         } else if type == .keyUp && isEscapeKey && isActive {
             isActive = false
             onRecordingStopped?()
+            return true
         } else if type == .flagsChanged && !isControlPressed && isActive {
             isActive = false
             onRecordingStopped?()
+            return true
         }
+        return false
     }
 }
 
@@ -88,6 +93,6 @@ private func globalEventTapCallback(
         return Unmanaged.passRetained(event)
     }
 
-    manager.handleKeyEvent(event)
-    return Unmanaged.passRetained(event)
+    let consumed = manager.handleKeyEvent(event)
+    return consumed ? nil : Unmanaged.passRetained(event)
 }
