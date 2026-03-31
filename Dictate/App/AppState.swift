@@ -24,8 +24,11 @@ final class AppState: ObservableObject {
     @Published var autoCopyToClipboard: Bool {
         didSet { UserDefaults.standard.set(autoCopyToClipboard, forKey: "autoCopyToClipboard") }
     }
-    @Published var pauseMusicWhileRecording: Bool {
-        didSet { UserDefaults.standard.set(pauseMusicWhileRecording, forKey: "pauseMusicWhileRecording") }
+    @Published var muteAudioWhileRecording: Bool {
+        didSet { UserDefaults.standard.set(muteAudioWhileRecording, forKey: "muteAudioWhileRecording") }
+    }
+    @Published var autoPasteToActiveApp: Bool {
+        didSet { UserDefaults.standard.set(autoPasteToActiveApp, forKey: "autoPasteToActiveApp") }
     }
 
     // MARK: - Services
@@ -46,13 +49,15 @@ final class AppState: ObservableObject {
         let defaults = UserDefaults.standard
         defaults.register(defaults: [
             "autoCopyToClipboard": true,
-            "pauseMusicWhileRecording": true
+            "muteAudioWhileRecording": true,
+            "autoPasteToActiveApp": true
         ])
 
         apiKey = defaults.string(forKey: "apiKey") ?? ""
         language = defaults.string(forKey: "language") ?? ""
         autoCopyToClipboard = defaults.bool(forKey: "autoCopyToClipboard")
-        pauseMusicWhileRecording = defaults.bool(forKey: "pauseMusicWhileRecording")
+        muteAudioWhileRecording = defaults.bool(forKey: "muteAudioWhileRecording")
+        autoPasteToActiveApp = defaults.bool(forKey: "autoPasteToActiveApp")
 
         transcriptions = store.load()
         setupKeyboardManager()
@@ -101,8 +106,8 @@ final class AppState: ObservableObject {
         guard !isRecording else { return }
         errorMessage = nil
 
-        if pauseMusicWhileRecording {
-            musicController.pauseMusic()
+        if muteAudioWhileRecording {
+            musicController.muteSystemAudio()
         }
 
         do {
@@ -111,8 +116,8 @@ final class AppState: ObservableObject {
             startMetering()
         } catch {
             errorMessage = "Failed to start recording: \(error.localizedDescription)"
-            if pauseMusicWhileRecording {
-                musicController.resumeMusic()
+            if muteAudioWhileRecording {
+                musicController.restoreSystemAudio()
             }
         }
     }
@@ -123,7 +128,7 @@ final class AppState: ObservableObject {
 
         guard let result = audioRecorder.stopRecording() else {
             isRecording = false
-            if pauseMusicWhileRecording { musicController.resumeMusic() }
+            if muteAudioWhileRecording { musicController.restoreSystemAudio() }
             return
         }
 
@@ -131,13 +136,13 @@ final class AppState: ObservableObject {
 
         // Skip very short recordings (< 0.3s)
         if result.duration < 0.3 {
-            if pauseMusicWhileRecording { musicController.resumeMusic() }
+            if muteAudioWhileRecording { musicController.restoreSystemAudio() }
             try? FileManager.default.removeItem(at: result.url)
             return
         }
 
         isTranscribing = true
-        if pauseMusicWhileRecording { musicController.resumeMusic() }
+        if muteAudioWhileRecording { musicController.restoreSystemAudio() }
 
         let currentApiKey = apiKey
         let currentLanguage = language
@@ -158,6 +163,11 @@ final class AppState: ObservableObject {
 
                 if autoCopyToClipboard {
                     copyToClipboard(text)
+                    if autoPasteToActiveApp {
+                        // Small delay so the pasteboard updates before simulating Cmd+V
+                        try? await Task.sleep(nanoseconds: 100_000_000)
+                        simulatePaste()
+                    }
                 }
 
                 isTranscribing = false
@@ -175,6 +185,21 @@ final class AppState: ObservableObject {
     func copyToClipboard(_ text: String) {
         NSPasteboard.general.clearContents()
         NSPasteboard.general.setString(text, forType: .string)
+    }
+
+    // MARK: - Auto-paste
+
+    private func simulatePaste() {
+        let source = CGEventSource(stateID: .hidSystemState)
+        let vKeyCode: CGKeyCode = 9 // 'v' key
+
+        let keyDown = CGEvent(keyboardEventSource: source, virtualKey: vKeyCode, keyDown: true)
+        keyDown?.flags = .maskCommand
+        keyDown?.post(tap: .cgSessionEventTap)
+
+        let keyUp = CGEvent(keyboardEventSource: source, virtualKey: vKeyCode, keyDown: false)
+        keyUp?.flags = .maskCommand
+        keyUp?.post(tap: .cgSessionEventTap)
     }
 
     // MARK: - History management

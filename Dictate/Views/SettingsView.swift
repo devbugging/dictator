@@ -15,7 +15,9 @@ struct SettingsView: View {
 
             Section("Behavior") {
                 Toggle("Auto-copy transcription to clipboard", isOn: $appState.autoCopyToClipboard)
-                Toggle("Pause music while recording", isOn: $appState.pauseMusicWhileRecording)
+                Toggle("Auto-paste into active input", isOn: $appState.autoPasteToActiveApp)
+                    .disabled(!appState.autoCopyToClipboard)
+                Toggle("Mute system audio while recording", isOn: $appState.muteAudioWhileRecording)
             }
 
             Section("Shortcut") {

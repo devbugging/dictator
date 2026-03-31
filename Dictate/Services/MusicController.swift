@@ -1,58 +1,63 @@
+import CoreAudio
 import Foundation
 
 final class MusicController {
-    private var wasMusicPlaying = false
-    private var wasSpotifyPlaying = false
+    private var wasMuted = false
 
-    func pauseMusic() {
-        wasMusicPlaying = runAppleScript("""
-            tell application "Music"
-                if it is running then
-                    if player state is playing then
-                        pause
-                        return "true"
-                    end if
-                end if
-            end tell
-            return "false"
-        """) == "true"
-
-        wasSpotifyPlaying = runAppleScript("""
-            tell application "Spotify"
-                if it is running then
-                    if player state is playing then
-                        pause
-                        return "true"
-                    end if
-                end if
-            end tell
-            return "false"
-        """) == "true"
-    }
-
-    func resumeMusic() {
-        if wasMusicPlaying {
-            _ = runAppleScript("""
-                tell application "Music"
-                    play
-                end tell
-            """)
-            wasMusicPlaying = false
-        }
-        if wasSpotifyPlaying {
-            _ = runAppleScript("""
-                tell application "Spotify"
-                    play
-                end tell
-            """)
-            wasSpotifyPlaying = false
+    func muteSystemAudio() {
+        // Check current mute state so we can restore it
+        wasMuted = isSystemMuted()
+        if !wasMuted {
+            setSystemMute(true)
         }
     }
 
-    private func runAppleScript(_ source: String) -> String? {
-        var error: NSDictionary?
-        let script = NSAppleScript(source: source)
-        let result = script?.executeAndReturnError(&error)
-        return result?.stringValue
+    func restoreSystemAudio() {
+        // Only unmute if we were the ones who muted it
+        if !wasMuted {
+            setSystemMute(false)
+        }
+    }
+
+    // MARK: - CoreAudio helpers
+
+    private func defaultOutputDeviceID() -> AudioDeviceID? {
+        var deviceID = AudioDeviceID(0)
+        var size = UInt32(MemoryLayout<AudioDeviceID>.size)
+        var address = AudioObjectPropertyAddress(
+            mSelector: kAudioHardwarePropertyDefaultOutputDevice,
+            mScope: kAudioObjectPropertyScopeGlobal,
+            mElement: kAudioObjectPropertyElementMain
+        )
+        let status = AudioObjectGetPropertyData(
+            AudioObjectID(kAudioObjectSystemObject), &address, 0, nil, &size, &deviceID
+        )
+        return status == noErr ? deviceID : nil
+    }
+
+    private func isSystemMuted() -> Bool {
+        guard let deviceID = defaultOutputDeviceID() else { return false }
+        var muted: UInt32 = 0
+        var size = UInt32(MemoryLayout<UInt32>.size)
+        var address = AudioObjectPropertyAddress(
+            mSelector: kAudioDevicePropertyMute,
+            mScope: kAudioDevicePropertyScopeOutput,
+            mElement: kAudioObjectPropertyElementMain
+        )
+        AudioObjectGetPropertyData(deviceID, &address, 0, nil, &size, &muted)
+        return muted != 0
+    }
+
+    private func setSystemMute(_ mute: Bool) {
+        guard let deviceID = defaultOutputDeviceID() else { return }
+        var value: UInt32 = mute ? 1 : 0
+        var address = AudioObjectPropertyAddress(
+            mSelector: kAudioDevicePropertyMute,
+            mScope: kAudioDevicePropertyScopeOutput,
+            mElement: kAudioObjectPropertyElementMain
+        )
+        AudioObjectSetPropertyData(
+            deviceID, &address, 0, nil, UInt32(MemoryLayout<UInt32>.size), &value
+        )
     }
 }
