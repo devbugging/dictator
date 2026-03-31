@@ -2,7 +2,7 @@
   <img src="icon.svg" width="128" alt="Dictate icon">
 </p>
 
-<h1 align="center">Dictate</h1>
+<h1 align="center">Dictator</h1>
 
 <p align="center">
 A lightweight macOS menu bar app that turns your voice into text<br>using OpenAI's Whisper API.
