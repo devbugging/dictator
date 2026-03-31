@@ -23,9 +23,17 @@ A lightweight macOS menu bar app that turns your voice into text<br>using OpenAI
 
 That's it. The transcription is also saved to history so you can copy it again later.
 
-## Setup
+## Install
 
-### 1. Build & Run
+### Option A: Use the Pre-built App
+
+1. Download `Dictate.app` from the [`release/`](release/) folder
+2. Move it to your **Applications** folder
+3. Double-click to launch — it appears as a microphone icon in your menu bar
+
+> On first launch, macOS may show a security warning. Go to **System Settings > Privacy & Security** and click **Open Anyway**.
+
+### Option B: Build from Source
 
 Open `Dictate.xcodeproj` in Xcode and run the project (`Cmd + R`). The app appears as a microphone icon in your menu bar.
 
@@ -64,4 +72,4 @@ Click the menu bar icon, then open **Settings**. Paste your [OpenAI API key](htt
 
 - macOS 14.0 (Sonoma) or later
 - OpenAI API key with access to the Whisper transcription API
-- Xcode 16+ to build from source
+- Xcode 16+ (only if building from source)
