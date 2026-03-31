@@ -1,0 +1,395 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0A851159397F58BB1F766BEE /* AudioRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C93E49BD7643046FE08330 /* AudioRecorder.swift */; };
+		21E049CE57C5BE4B4BF1A64F /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B477BF218438D3BC41854BC6 /* SettingsView.swift */; };
+		3A2F4AE620FCD889E3011E4F /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E9A4D10DB970B3D961B55F /* AppState.swift */; };
+		7568473185A5C3F8E3169F39 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC489E843C3A48AA8FAE5E6A /* ContentView.swift */; };
+		7CE3B512C1D75498AB15FDB2 /* TranscriptionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DDB18FDB10BF1358C8B147A /* TranscriptionStore.swift */; };
+		92F3E3C0ADA6901050EB5E38 /* MusicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2492A35E87DD1FC5FA9AB72B /* MusicController.swift */; };
+		99E52278439A4D71D8CE8198 /* TranscriptionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA9043E79B3250B32665FEE /* TranscriptionService.swift */; };
+		ABB1F63E67108B54BD754E57 /* Transcription.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3719186325879150DB5F8C /* Transcription.swift */; };
+		B6045798E2785067DA4FEA6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 89E0BA6436B915901936C242 /* Assets.xcassets */; };
+		BB44E5E0AA59AD8F6154103A /* KeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08B863AA6188597C5968E88 /* KeyboardManager.swift */; };
+		E4CA6F830FC9EB362EA45B63 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F11F43D3374B020DF37D11 /* HistoryView.swift */; };
+		EE3E41D1E5AD4B3A344BCC6B /* DictateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CCD11C14CE063125E277ACD /* DictateApp.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		16C93E49BD7643046FE08330 /* AudioRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorder.swift; sourceTree = "<group>"; };
+		1CCD11C14CE063125E277ACD /* DictateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictateApp.swift; sourceTree = "<group>"; };
+		2492A35E87DD1FC5FA9AB72B /* MusicController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicController.swift; sourceTree = "<group>"; };
+		372E5633646B6B250CD51477 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		3DDB18FDB10BF1358C8B147A /* TranscriptionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranscriptionStore.swift; sourceTree = "<group>"; };
+		44F11F43D3374B020DF37D11 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		562E3D9F4976D2EBA11ADD37 /* Dictate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dictate.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A0807200492FCF7717F6E31 /* Dictate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Dictate.entitlements; sourceTree = "<group>"; };
+		89E0BA6436B915901936C242 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AD3719186325879150DB5F8C /* Transcription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transcription.swift; sourceTree = "<group>"; };
+		B477BF218438D3BC41854BC6 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		BCA9043E79B3250B32665FEE /* TranscriptionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranscriptionService.swift; sourceTree = "<group>"; };
+		C08B863AA6188597C5968E88 /* KeyboardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardManager.swift; sourceTree = "<group>"; };
+		CC489E843C3A48AA8FAE5E6A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F9E9A4D10DB970B3D961B55F /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		1A15ED6885771D2686EEA30D /* Dictate */ = {
+			isa = PBXGroup;
+			children = (
+				5A0807200492FCF7717F6E31 /* Dictate.entitlements */,
+				7203C69D40847D7757D60F84 /* App */,
+				B65297FF49AEA422B0245FA5 /* Models */,
+				61F62389900058FDAE627A1E /* Resources */,
+				81B2204E793DD6321C752157 /* Services */,
+				9981D33B46B5FAB10D05DE0A /* Stores */,
+				D0F3F36E06345A3FDB3A2D43 /* Views */,
+			);
+			path = Dictate;
+			sourceTree = "<group>";
+		};
+		5B6C8CAEFBD86DE804137D1E = {
+			isa = PBXGroup;
+			children = (
+				1A15ED6885771D2686EEA30D /* Dictate */,
+				CC973A6C2F924DFEBB320591 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		61F62389900058FDAE627A1E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				89E0BA6436B915901936C242 /* Assets.xcassets */,
+				372E5633646B6B250CD51477 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		7203C69D40847D7757D60F84 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				F9E9A4D10DB970B3D961B55F /* AppState.swift */,
+				1CCD11C14CE063125E277ACD /* DictateApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		81B2204E793DD6321C752157 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				16C93E49BD7643046FE08330 /* AudioRecorder.swift */,
+				C08B863AA6188597C5968E88 /* KeyboardManager.swift */,
+				2492A35E87DD1FC5FA9AB72B /* MusicController.swift */,
+				BCA9043E79B3250B32665FEE /* TranscriptionService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		9981D33B46B5FAB10D05DE0A /* Stores */ = {
+			isa = PBXGroup;
+			children = (
+				3DDB18FDB10BF1358C8B147A /* TranscriptionStore.swift */,
+			);
+			path = Stores;
+			sourceTree = "<group>";
+		};
+		B65297FF49AEA422B0245FA5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AD3719186325879150DB5F8C /* Transcription.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CC973A6C2F924DFEBB320591 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				562E3D9F4976D2EBA11ADD37 /* Dictate.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D0F3F36E06345A3FDB3A2D43 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CC489E843C3A48AA8FAE5E6A /* ContentView.swift */,
+				44F11F43D3374B020DF37D11 /* HistoryView.swift */,
+				B477BF218438D3BC41854BC6 /* SettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		96581A392DB18B59EE5C077D /* Dictate */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 82B889A7FCE2CA961BDF77AD /* Build configuration list for PBXNativeTarget "Dictate" */;
+			buildPhases = (
+				3050EBD126D5FA00EE63F511 /* Sources */,
+				85401B298D9E2C22AF17EB9A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Dictate;
+			packageProductDependencies = (
+			);
+			productName = Dictate;
+			productReference = 562E3D9F4976D2EBA11ADD37 /* Dictate.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		858810C8F7632F298A99AE36 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+				};
+			};
+			buildConfigurationList = 19181FA8BE5525E41AFE53D8 /* Build configuration list for PBXProject "Dictate" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 5B6C8CAEFBD86DE804137D1E;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = CC973A6C2F924DFEBB320591 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				96581A392DB18B59EE5C077D /* Dictate */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		85401B298D9E2C22AF17EB9A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B6045798E2785067DA4FEA6D /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3050EBD126D5FA00EE63F511 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A2F4AE620FCD889E3011E4F /* AppState.swift in Sources */,
+				0A851159397F58BB1F766BEE /* AudioRecorder.swift in Sources */,
+				7568473185A5C3F8E3169F39 /* ContentView.swift in Sources */,
+				EE3E41D1E5AD4B3A344BCC6B /* DictateApp.swift in Sources */,
+				E4CA6F830FC9EB362EA45B63 /* HistoryView.swift in Sources */,
+				BB44E5E0AA59AD8F6154103A /* KeyboardManager.swift in Sources */,
+				92F3E3C0ADA6901050EB5E38 /* MusicController.swift in Sources */,
+				21E049CE57C5BE4B4BF1A64F /* SettingsView.swift in Sources */,
+				ABB1F63E67108B54BD754E57 /* Transcription.swift in Sources */,
+				99E52278439A4D71D8CE8198 /* TranscriptionService.swift in Sources */,
+				7CE3B512C1D75498AB15FDB2 /* TranscriptionStore.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		68CBC2F8F31FBA48A72BA024 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5;
+			};
+			name = Debug;
+		};
+		7FD2B016D673AB0A45681534 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Dictate/Dictate.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_HARDENED_RUNTIME = NO;
+				INFOPLIST_FILE = Dictate/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dictate.app;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		A89E808D569B284590A96F34 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Dictate/Dictate.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_HARDENED_RUNTIME = NO;
+				INFOPLIST_FILE = Dictate/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dictate.app;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		CC1D552E5D54797A76104CFE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		19181FA8BE5525E41AFE53D8 /* Build configuration list for PBXProject "Dictate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				68CBC2F8F31FBA48A72BA024 /* Debug */,
+				CC1D552E5D54797A76104CFE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		82B889A7FCE2CA961BDF77AD /* Build configuration list for PBXNativeTarget "Dictate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7FD2B016D673AB0A45681534 /* Debug */,
+				A89E808D569B284590A96F34 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 858810C8F7632F298A99AE36 /* Project object */;
+}
